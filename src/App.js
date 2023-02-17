@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import ActionLink from './ActionLink';
 import Toggle from './Toggle';
 import MailBox from './MailBox';
+import NumberList from './NumberList';
 
 let user = {
   firstname: "Kylian",
@@ -34,6 +35,7 @@ function App() {
   }
   return (
     <div className="container App">
+      <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
       <MailBox nbMsg={1}/>
       <Toggle/>
