@@ -8,6 +8,7 @@ import ActionLink from './ActionLink';
 import Toggle from './Toggle';
 import MailBox from './MailBox';
 import NumberList from './NumberList';
+import ProductDisplay from './product/ProductDisplay';
 
 let user = {
   firstname: "Kylian",
@@ -35,13 +36,14 @@ function App() {
   }
   return (
     <div className="container App">
-      <NumberList numbers={[1,2,3,4,4]}/>
+      <ProductDisplay/>
+      {/* <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
       <MailBox nbMsg={1}/>
       <Toggle/>
-      <ActionLink/>
+      <ActionLink/> */}
       {/* {(num == 1) ? <Clock /> : null } */}
-      {clock}
+      {/* {clock}
       
       <Greeting user={user}>
         <p>test</p>
@@ -52,7 +54,7 @@ function App() {
       <Person nom="toto" age={24}/>
       <Person age={24}/>
       <Person age={"hjkh"}/>
-      <Person/>
+      <Person/> */}
     </div>
   );
 }
