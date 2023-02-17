@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import ProductForm from "./ProductForm";
 import ProductTable from "./ProductTable";
 
 function ProductDisplay(props){
@@ -20,10 +22,25 @@ function ProductDisplay(props){
         const newProducts = products.filter((prod)=> prod.id !== id)
         setProducts(newProducts)
     }
+    const toggleShowForm = function(){
+        setShowForm((oldShowForm)=> !oldShowForm)
+    }
+    const addProduct = (product)=>{
+        product.id = uuidv4();
+        const newProducts = products.concat(product)
+        // const newProducts = [...products, product]
+        setProducts(newProducts)
+        setShowForm(false)
+    }
     return (
         <div>
+            <div>
+                <button onClick={toggleShowForm} className="btn btn-primary">
+                    {showForm ? "Lister produits" : "Ajouter produit"}
+                </button>
+            </div>
             {showForm ? 
-                <p>formulaire</p> : 
+                <ProductForm addProduct={addProduct}/> : 
                 <ProductTable 
                     products={products} 
                     deleteProduct={deleteProduct}/>
