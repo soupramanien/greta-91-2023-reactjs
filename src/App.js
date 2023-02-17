@@ -5,6 +5,8 @@ import Person from './Person';
 import Clock from './Clock';
 import { useEffect, useState } from 'react';
 import ActionLink from './ActionLink';
+import Toggle from './Toggle';
+import MailBox from './MailBox';
 
 let user = {
   firstname: "Kylian",
@@ -32,6 +34,9 @@ function App() {
   }
   return (
     <div className="container App">
+      <MailBox nbMsg={0}/>
+      <MailBox nbMsg={1}/>
+      <Toggle/>
       <ActionLink/>
       {/* {(num == 1) ? <Clock /> : null } */}
       {clock}
