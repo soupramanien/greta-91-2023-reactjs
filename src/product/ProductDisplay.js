@@ -13,11 +13,20 @@ function ProductDisplay(props){
         ])
     }, []);
 
+    const deleteProduct = (id)=>{//1002
+        console.log("deleteProduct");
+        console.log("product id : "+id);
+        // const newProducts = products.filter((prod)=> {return prod.id !== id})
+        const newProducts = products.filter((prod)=> prod.id !== id)
+        setProducts(newProducts)
+    }
     return (
         <div>
             {showForm ? 
                 <p>formulaire</p> : 
-                <ProductTable products={products}/>
+                <ProductTable 
+                    products={products} 
+                    deleteProduct={deleteProduct}/>
             }
         </div>
     )

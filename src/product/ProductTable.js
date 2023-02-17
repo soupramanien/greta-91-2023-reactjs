@@ -16,6 +16,7 @@ export default function ProductTable(props) {
             </thead>
             <tbody>
                 {props.products.map((product)=> <ProductTableItem 
+                                                    deleteProduct={props.deleteProduct}
                                                     key={product.id}
                                                     product={product}/>)}
             </tbody>
