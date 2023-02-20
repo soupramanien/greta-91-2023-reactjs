@@ -9,6 +9,7 @@ import Toggle from './Toggle';
 import MailBox from './MailBox';
 import NumberList from './NumberList';
 import ProductDisplay from './product/ProductDisplay';
+import Posts from './Posts';
 
 let user = {
   firstname: "Kylian",
@@ -18,9 +19,9 @@ let user2 = {
   firstname: "toto",
   lastname: "titi",
 }
-function getRandom(max){
+function getRandom(max) {
   let num = Math.random();
-  return Math.ceil(num*max);
+  return Math.ceil(num * max);
 }
 function App() {
   const [num, setNum] = useState(1)
@@ -28,15 +29,16 @@ function App() {
     //componentDidMount
     const timerId = setInterval(() => setNum(getRandom(2)), 2000);
     //componentWillUnmount
-    return ()=> clearInterval(timerId)
+    return () => clearInterval(timerId)
   }, [])
   let clock = null;
-  if(num == 1){
+  if (num === 1) {
     clock = <Clock />;
   }
   return (
     <div className="container App">
-      <ProductDisplay/>
+      <Posts />
+      <ProductDisplay />
       {/* <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
       <MailBox nbMsg={1}/>

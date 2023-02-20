@@ -13,7 +13,6 @@ export default function ProductForm(props) {
     const [price, setPrice] = useState("");
     const [nameMessage, setNameMessage] = useState("")
     const [priceMessage, setPriceMessage] = useState("")
-
     const handleChange = (event) => {
         let value = event.target.value;
         switch (event.target.name) {//"name"|"price"
