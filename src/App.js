@@ -37,7 +37,7 @@ function App() {
   }
   return (
     <div className="container App">
-      <Posts />
+      {/* <Posts /> */}
       <ProductDisplay />
       {/* <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
