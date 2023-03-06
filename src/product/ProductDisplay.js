@@ -46,9 +46,19 @@ function ProductDisplay(props){
         console.log("product id : "+id);
         // const newProducts = products.filter((prod)=> {return prod.id !== id})
         //envoyer une requete HTTP DELETE pour supprimer le produit
-        fetch(`${BASE_URL}/admin/products/${id}`, {method: 'delete'})
+        
+        let headers = new Headers();
+        headers.set('Authorization', 'Bearer '+props.user.accessToken)
+        fetch(`${BASE_URL}/admin/products/${id}`, 
+                {
+                    method: 'delete', headers: headers
+                })
             .then((res)=>{
                 console.log(res);
+                if(!res.ok) {
+                    props.setUser(null)
+                    return;
+                }
                 setProducts(()=> products.filter((prod)=> prod.id !== id))
                 return res.json();
             })
@@ -62,6 +72,7 @@ function ProductDisplay(props){
     const addProduct = (product)=>{
         let headers = new Headers();
         headers.set('content-type','Application/json')
+        headers.set('Authorization', 'Bearer '+props.user.accessToken)
         fetch(`${BASE_URL}/admin/products`, 
             {
                 method: 'post', 
@@ -80,7 +91,9 @@ function ProductDisplay(props){
                 setProducts(()=> [...products, product])
                 setShowForm(false)
             })
-            .catch((error)=> console.log(error));
+            .catch((error)=> {
+                props.setUser(null)
+            });
         // product.id = uuidv4();
         // const newProducts = products.concat(product)
         // const newProducts = [...products, product]

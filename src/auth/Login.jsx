@@ -30,8 +30,10 @@ export default function Login(props) {
             })
         console.log(res);
         if(res.ok){
+            const user = await res.json();
             //enregistrer token dans le stockage local
-            //rediriger l'user vers la page productDisplay
+            localStorage.setItem("user", JSON.stringify(user))
+            props.setUser(user)
         }
         else{
             alert("username ou password invalide!")

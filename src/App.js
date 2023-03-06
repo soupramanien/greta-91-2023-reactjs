@@ -26,6 +26,8 @@ function getRandom(max) {
 }
 function App() {
   const [num, setNum] = useState(1)
+  const tempUser = JSON.parse(localStorage.getItem("user"))
+  const [user, setUser] = useState(tempUser)
   useEffect(() => {
     //componentDidMount
     const timerId = setInterval(() => setNum(getRandom(2)), 2000);
@@ -38,9 +40,12 @@ function App() {
   }
   return (
     <div className="container App">
-      <Login/>
+      {user ? 
+        <ProductDisplay setUser={setUser} user={user}/> : 
+        <Login setUser={setUser}/>}
+      
       {/* <Posts /> */}
-      <ProductDisplay />
+      
       {/* <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
       <MailBox nbMsg={1}/>
