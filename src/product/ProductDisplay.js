@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { BASE_URL } from "../consts/API";
 import useFetch from "../hooks/useFetch";
 import ProductForm from "./ProductForm";
 import ProductTable from "./ProductTable";
@@ -16,7 +17,7 @@ function ProductDisplay(props){
         //     {id: 1002, name: 'prod3', price: 30.15},
         // ])
         //récupérer les données du serveur localhost:7070
-        fetch("http://localhost:7070/products")
+        fetch(BASE_URL + "/products")
             .then((res) => {
                 console.log(res);
                 // console.log(res.body);
@@ -45,7 +46,7 @@ function ProductDisplay(props){
         console.log("product id : "+id);
         // const newProducts = products.filter((prod)=> {return prod.id !== id})
         //envoyer une requete HTTP DELETE pour supprimer le produit
-        fetch(`http://localhost:7070/products/${id}`, {method: 'delete'})
+        fetch(`${BASE_URL}/admin/products/${id}`, {method: 'delete'})
             .then((res)=>{
                 console.log(res);
                 setProducts(()=> products.filter((prod)=> prod.id !== id))
@@ -61,7 +62,7 @@ function ProductDisplay(props){
     const addProduct = (product)=>{
         let headers = new Headers();
         headers.set('content-type','Application/json')
-        fetch(`http://localhost:7070/products`, 
+        fetch(`${BASE_URL}/admin/products`, 
             {
                 method: 'post', 
                 headers:headers,

@@ -10,6 +10,7 @@ import MailBox from './MailBox';
 import NumberList from './NumberList';
 import ProductDisplay from './product/ProductDisplay';
 import Posts from './Posts';
+import Login from './auth/Login';
 
 let user = {
   firstname: "Kylian",
@@ -37,6 +38,7 @@ function App() {
   }
   return (
     <div className="container App">
+      <Login/>
       {/* <Posts /> */}
       <ProductDisplay />
       {/* <NumberList numbers={[1,2,3,4,4]}/>
