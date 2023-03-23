@@ -1,4 +1,5 @@
-FROM node:alpine
+#projet multi-stage
+FROM node:alpine as build-stage
 
 WORKDIR /app
 
@@ -8,8 +9,11 @@ COPY package-lock.json ./
 RUN npm install
 
 COPY ./ ./
+RUN npm run build
 
-CMD ["npm", "start"]
+FROM nginx:alpine as deploy-stage
+
+COPY --from=build-stage /app/build/ /usr/share/nginx/html
 
 
 
