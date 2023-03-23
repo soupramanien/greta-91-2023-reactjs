@@ -40,12 +40,12 @@ function App() {
   }
   return (
     <div className="container App">
-      {user ? 
+      {/* {user ? 
         <ProductDisplay setUser={setUser} user={user}/> : 
-        <Login setUser={setUser}/>}
-      
-      {/* <Posts /> */}
-      
+        <Login setUser={setUser}/>} */}
+
+      <Posts />
+
       {/* <NumberList numbers={[1,2,3,4,4]}/>
       <MailBox nbMsg={0}/>
       <MailBox nbMsg={1}/>
